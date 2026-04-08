@@ -227,17 +227,13 @@ a { color: inherit; }
 
 /* ── 1. HERO ─────────────────────────────────────────────────────── */
 .np-hero {
-  background: var(--bg-main) !important;
+  background: #fff !important;
   padding: 148px 0 88px;
   position: relative; overflow: hidden;
-}
-.np-hero::before {
-  content: ''; position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(52,38,60,0.055) 1px, transparent 1px);
-  background-size: 28px 28px; pointer-events: none; z-index: 0;
+  border-bottom: 1px solid var(--border);
 }
 .np-hero .np-wrap { position: relative; z-index: 1; }
-.np-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.np-hero-inner { display: grid; grid-template-columns: 58% 42%; gap: 56px; align-items: center; }
 .np-hero-text { display: flex; flex-direction: column; align-items: flex-start; }
 
 .np-suite-tag {
@@ -255,9 +251,9 @@ a { color: inherit; }
 .np-suite-tag-pip svg { width: 10px; height: 10px; }
 
 .np-hero-title {
-  font-family: 'Poppins', sans-serif; font-size: 64px; font-weight: 700;
-  line-height: 1.08; color: var(--heading); letter-spacing: -2px;
-  margin: 0 0 24px; font-kerning: normal; text-rendering: optimizeLegibility;
+  font-family: 'Poppins', sans-serif; font-size: 80px; font-weight: 800;
+  line-height: 1.03; color: var(--heading); letter-spacing: -3px;
+  margin: 0 0 28px; font-kerning: normal; text-rendering: optimizeLegibility;
 }
 .np-hero-title .np-amber { color: var(--amber); }
 .np-hero-sub { font-family: 'Mulish', sans-serif; font-size: 18px; line-height: 1.78; color: var(--body-text); max-width: 480px; margin: 0 0 40px; }
@@ -271,43 +267,81 @@ a { color: inherit; }
 
 /* Hero visual */
 .np-hero-visual { position: relative; margin-top: -120px; }
+.np-hero-visual::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -240px; bottom: -60px; left: 10%;
+  background: var(--dark);
+  border-radius: 18px 0 0 18px;
+  z-index: 0;
+}
 .np-img-stack { position: relative; padding: 24px 88px 96px 0; }
-.np-img-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 640px; height: 640px; border-radius: 50%; background: radial-gradient(circle, rgba(242,143,0,0.12) 0%, transparent 70%); pointer-events: none; z-index: 0; }
-.np-img-primary { display: block; width: 100%; max-width: 760px; height: auto; position: relative; z-index: 2; filter: drop-shadow(0 20px 48px rgba(52,38,60,0.14)); }
-.np-img-secondary { position: absolute; bottom: 0; right: 0; width: clamp(220px,54%,360px); height: auto; z-index: 3; transform: rotate(-4deg); filter: drop-shadow(0 12px 28px rgba(52,38,60,0.18)); transition: transform 0.4s var(--ease); }
+.np-img-primary { display: block; width: 100%; max-width: 760px; height: auto; position: relative; z-index: 2; filter: drop-shadow(0 24px 56px rgba(0,0,0,0.36)); }
+.np-img-secondary { position: absolute; bottom: 0; right: 0; width: clamp(220px,54%,360px); height: auto; z-index: 3; transform: rotate(-4deg); filter: drop-shadow(0 12px 28px rgba(0,0,0,0.30)); transition: transform 0.4s var(--ease); }
 .np-img-stack:hover .np-img-secondary { transform: rotate(-2deg) translateY(-4px); }
-.np-img-badge { position: absolute; top: 0; right: 8px; width: 116px; height: 116px; background: var(--white); border-radius: 50%; border: 2px solid var(--border); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; z-index: 4; overflow: hidden; }
+.np-img-badge { position: absolute; top: 0; right: 8px; width: 116px; height: 116px; background: var(--white); border-radius: 50%; border: 2px solid rgba(255,255,255,0.15); box-shadow: 0 8px 32px rgba(0,0,0,0.28); display: flex; align-items: center; justify-content: center; z-index: 4; overflow: hidden; }
 .np-img-badge img { width: 92px; height: 92px; object-fit: contain; }
-.np-img-pill svg circle { fill: var(--color-online); }
-.np-img-pill { position: absolute; top: 40%; right: -8px; display: inline-flex; align-items: center; gap: 7px; font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 600; color: var(--heading); background: var(--white); border: 1px solid var(--border); border-radius: var(--r-full); padding: 7px 14px; box-shadow: var(--shadow-sm); z-index: 4; white-space: nowrap; }
 
-/* ── 2. STATS BAR ─────────────────────────────────────────────────── */
-.np-stats { background: var(--dark); padding: 0; }
-.np-stats-row { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid rgba(255,255,255,0.06); }
-.np-stat { padding: 40px 28px; text-align: center; position: relative; transition: background 0.2s; }
-.np-stat:hover { background: rgba(255,255,255,0.03); }
-.np-stat + .np-stat::before { content: ''; position: absolute; left: 0; top: 25%; height: 50%; width: 1px; background: rgba(255,255,255,0.07); }
-.np-stat-num { font-family: 'Poppins', sans-serif; font-size: 36px; font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: 10px; font-variant-numeric: tabular-nums; letter-spacing: -0.5px; }
-.np-stat-label { font-family: 'Mulish', sans-serif; font-size: 13px; color: rgba(255,255,255,0.55); letter-spacing: 0.2px; }
+/* ── 2. PROOF STRIP ───────────────────────────────────────────────── */
+.np-stats { background: var(--darker); border-top: 1px solid rgba(255,255,255,0.04); overflow: hidden; }
+.np-marquee-wrap { display: flex; align-items: center; gap: 0; }
+.np-marquee-label {
+  font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase; color: var(--amber);
+  white-space: nowrap; padding: 22px 28px 22px 32px; flex-shrink: 0;
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.np-marquee { overflow: hidden; flex: 1; }
+.np-marquee-track {
+  display: flex; align-items: center; gap: 0;
+  white-space: nowrap;
+  animation: np-marquee-scroll 30s linear infinite;
+}
+.np-marquee-track:hover { animation-play-state: paused; }
+.np-marquee-item {
+  font-family: 'Mulish', sans-serif; font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.45); padding: 22px 32px; white-space: nowrap;
+  transition: color 0.2s;
+}
+.np-marquee-item:hover { color: rgba(255,255,255,0.8); }
+.np-marquee-dot { color: rgba(255,255,255,0.12); padding: 0; user-select: none; font-size: 18px; line-height: 1; }
+@keyframes np-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .np-marquee-track { animation: none; }
+}
 
-/* ── 3. FEATURES GRID ─────────────────────────────────────────────── */
-.np-features { padding: 120px 0; background: var(--bg-alt) !important; }
-.np-feat-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--r-xl); overflow: hidden; }
-.np-feat-cell { background: var(--card) !important; padding: 40px 36px; transition: background 0.22s, box-shadow 0.22s; position: relative; z-index: 0; }
-.np-feat-cell:hover { background: #fdfcfe !important; box-shadow: inset 0 0 0 1.5px var(--amber-border); z-index: 1; }
-.np-feat-cell-hero { grid-column: span 2; grid-row: span 2; padding: 52px 48px; background: var(--gray-50) !important; display: flex; flex-direction: column; }
-.np-feat-cell.np-feat-cell-hero:hover { background: #f0ecf6 !important; box-shadow: inset 0 0 0 1.5px var(--amber-border); }
-.np-feat-cell-hero .np-feat-title { font-size: 20px; margin-bottom: 12px; }
-.np-feat-cell-hero .np-feat-icon { width: 56px; height: 56px; border-radius: var(--r-lg); margin-bottom: 28px; }
-.np-feat-hero-sub { font-family: 'Mulish', sans-serif; font-size: 15px; line-height: 1.82; color: var(--body-text); margin: 0 0 28px; max-width: 400px; }
-.np-feat-hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-.np-feat-hero-tag { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; color: var(--dark); background: var(--white); border: 1px solid var(--border); border-radius: var(--r-full); padding: 5px 13px; }
-.np-feat-icon { width: 44px; height: 44px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 18px; flex-shrink: 0; transition: transform 0.24s cubic-bezier(0.16,1,0.3,1), box-shadow 0.24s; }
-.np-feat-cell:hover .np-feat-icon { transform: scale(1.1); box-shadow: 0 6px 20px rgba(242,143,0,0.18); }
-.np-icon-amber { background: var(--amber-bg); color: var(--amber); }
-.np-icon-dark  { background: var(--gray-100); color: var(--dark); }
-.np-feat-title { font-family: 'Poppins', sans-serif; font-size: 16px; font-weight: 700; color: var(--heading); margin: 0 0 10px; line-height: 1.4; }
-.np-feat-desc  { font-family: 'Mulish', sans-serif; font-size: 14px; line-height: 1.75; color: var(--body-text); margin: 0; }
+/* ── 3. FEATURES LIST ─────────────────────────────────────────────── */
+.np-features { padding: 120px 0; background: var(--white) !important; }
+.np-feat-list { display: flex; flex-direction: column; }
+.np-feat-row {
+  display: grid;
+  grid-template-columns: 56px 260px 1fr;
+  gap: 0 48px;
+  align-items: start;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.18s var(--ease-smooth);
+  cursor: default;
+}
+.np-feat-row:first-child { border-top: 1px solid var(--border); }
+.np-feat-row-num {
+  font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700;
+  color: var(--amber); letter-spacing: 1.5px; padding-top: 4px; display: block;
+}
+.np-feat-row-title {
+  font-family: 'Poppins', sans-serif; font-size: 17px; font-weight: 700;
+  color: var(--heading); line-height: 1.4; margin: 0; padding-top: 2px;
+}
+.np-feat-row-body {
+  font-family: 'Mulish', sans-serif; font-size: 15px; line-height: 1.75;
+  color: var(--body-text);
+}
+.np-feat-row-body p { margin: 0 0 16px; }
+.np-feat-hero-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.np-feat-hero-tag { font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.4px; color: var(--dark); background: var(--gray-50); border: 1px solid var(--border); border-radius: var(--r-full); padding: 4px 12px; }
 
 /* ── 4. FEATURE DETAILS ───────────────────────────────────────────── */
 .np-detail { padding: 120px 0; background: var(--bg-main) !important; }
@@ -336,8 +370,7 @@ a { color: inherit; }
 }
 
 /* ── 5. SUITE ─────────────────────────────────────────────────────── */
-.np-suite { padding: 120px 0; background: var(--dark); position: relative; overflow: hidden; }
-.np-suite::after { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(242,143,0,0.06) 0%, transparent 70%); pointer-events: none; }
+.np-suite { padding: 120px 0; background: var(--dark); }
 .np-suite .np-wrap { position: relative; z-index: 1; }
 .np-suite-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .np-suite .np-kicker { color: var(--amber); }
@@ -366,31 +399,70 @@ a { color: inherit; }
 .np-step-sep::before { content: ''; display: block; width: 24px; height: 1.5px; background: linear-gradient(90deg, rgba(242,143,0,0.3), rgba(242,143,0,0.08)); border-radius: 2px; }
 
 /* ── 7. TESTIMONIALS ──────────────────────────────────────────────── */
-.np-testimonials { padding: 120px 0; background: var(--bg-alt) !important; }
-.np-testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; align-items: start; }
-.np-testi { background: var(--card) !important; border: 1px solid var(--border); border-radius: var(--r-xl); padding: 36px 30px; transition: box-shadow 0.28s var(--ease), transform 0.28s var(--ease), border-color 0.28s var(--ease-smooth); position: relative; overflow: hidden; }
-.np-testi:hover { box-shadow: var(--shadow-md); transform: translateY(-5px); border-color: rgba(242,143,0,0.22); }
-.np-testi-featured { border-color: var(--amber-border); }
-.np-testi-featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px; background: var(--amber); border-radius: var(--r-xl) var(--r-xl) 0 0; }
-.np-testi-stars { color: var(--amber); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
-.np-testi-mark { font-family: 'Poppins', sans-serif; font-size: 52px; font-weight: 700; line-height: 0.75; color: var(--amber); opacity: 0.22; margin-bottom: 10px; display: block; letter-spacing: -1px; }
-.np-testi-text { font-family: 'Mulish', sans-serif; font-size: 15px; line-height: 1.75; color: var(--body-text); font-style: normal; margin: 0 0 24px; }
-.np-testi-author { display: flex; align-items: center; gap: 14px; }
-.np-testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: var(--amber-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; color: var(--amber); }
-.np-testi-name { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; color: var(--heading); margin-bottom: 2px; }
-.np-testi-role { font-family: 'Mulish', sans-serif; font-size: 12px; color: var(--body-text); }
+.np-testimonials { padding: 120px 0; background: var(--dark); }
+.np-testi-solo { max-width: 800px; margin: 0 auto; text-align: center; }
+.np-testi-solo-stars { color: var(--amber); font-size: 15px; letter-spacing: 3px; margin-bottom: 44px; display: block; }
+.np-testi-solo-quote {
+  font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 600;
+  line-height: 1.46; color: var(--white); margin-bottom: 52px; letter-spacing: -0.4px;
+}
+.np-testi-solo-attr { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.np-testi-solo-avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--amber); display: flex; align-items: center; justify-content: center;
+  font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700;
+  color: #fff; flex-shrink: 0;
+}
+.np-testi-solo-info { text-align: left; }
+.np-testi-solo-name { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+.np-testi-solo-role { font-family: 'Mulish', sans-serif; font-size: 13px; color: rgba(255,255,255,0.5); }
+.np-testi-section-kicker { color: var(--amber); }
+.np-testimonials .np-section-head .np-h2 { color: var(--white); }
+.np-testimonials .np-section-head .np-lead { color: rgba(255,255,255,0.55); }
 
-/* ── 8. CTA ───────────────────────────────────────────────────────── */
-.np-cta { padding: 120px 0; background: var(--dark); position: relative; overflow: hidden; text-align: center; }
-.np-cta::before { content: ''; position: absolute; bottom: -200px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(242,143,0,0.07) 0%, transparent 70%); pointer-events: none; }
-.np-cta .np-wrap { position: relative; z-index: 1; }
-.np-cta .np-kicker { color: var(--amber); }
-.np-cta-title { font-family: 'Poppins', sans-serif; font-size: 44px; font-weight: 700; line-height: 1.14; color: var(--white); letter-spacing: -1px; margin: 0 auto 20px; max-width: 680px; font-kerning: normal; text-rendering: optimizeLegibility; }
-.np-cta-sub { font-family: 'Mulish', sans-serif; font-size: 17px; line-height: 1.8; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto 48px; }
+/* ── 8. CONTACT ───────────────────────────────────────────────────── */
+.np-contact { padding: 120px 0; background: var(--bg-alt); }
+.np-contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.np-contact-info .np-h2 { font-size: 36px; }
+.np-contact-info .np-lead { margin-bottom: 32px; }
+.np-contact-detail { display: flex; align-items: center; gap: 12px; font-family: 'Mulish', sans-serif; font-size: 14px; color: var(--body-text); margin-bottom: 14px; text-decoration: none; transition: color 0.15s; }
+.np-contact-detail:hover { color: var(--heading); }
+.np-contact-detail-ico { width: 36px; height: 36px; border-radius: var(--r-md); background: var(--amber-bg); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--amber); font-size: 14px; }
+.np-contact-form-wrap { background: var(--white); border: 1px solid var(--border); border-radius: var(--r-xl); padding: 40px; box-shadow: var(--shadow-sm); }
+.np-form-group { margin-bottom: 20px; }
+.np-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.np-form-label { display: block; font-family: 'Poppins', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; color: var(--heading); margin-bottom: 7px; }
+.np-form-input {
+  width: 100%; padding: 11px 14px;
+  border: 1.5px solid var(--border); border-radius: var(--r-md);
+  font-family: 'Mulish', sans-serif; font-size: 14px; color: var(--heading);
+  background: var(--white); outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.np-form-input::placeholder { color: var(--text-muted); }
+.np-form-input:focus { border-color: var(--amber); box-shadow: 0 0 0 3px var(--amber-bg); }
+textarea.np-form-input { resize: vertical; min-height: 112px; }
+.np-form-submit { width: 100%; justify-content: center; margin-top: 8px; }
+@media (max-width: 900px) {
+  .np-contact-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 640px) {
+  .np-form-row { grid-template-columns: 1fr; }
+}
+
+/* ── 9. CTA ───────────────────────────────────────────────────────── */
+.np-cta { padding: 120px 0; background: var(--amber); text-align: center; }
+.np-cta .np-kicker { color: rgba(26,10,0,0.52); }
+.np-cta-title { font-family: 'Poppins', sans-serif; font-size: 44px; font-weight: 800; line-height: 1.1; color: #1a0600; letter-spacing: -1.5px; margin: 0 auto 20px; max-width: 680px; font-kerning: normal; text-rendering: optimizeLegibility; }
+.np-cta-sub { font-family: 'Mulish', sans-serif; font-size: 17px; line-height: 1.8; color: rgba(26,10,0,0.62); max-width: 520px; margin: 0 auto 48px; }
 .np-cta-btns { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 28px; }
-.np-cta-footnote { font-family: 'Mulish', sans-serif; font-size: 13px; color: var(--text-on-dark); }
-.np-cta-footnote a { color: var(--amber); text-decoration: none; font-weight: 600; transition: color 0.15s; }
-.np-cta-footnote a:hover { color: var(--amber-hover); }
+.np-cta-btns .np-btn-primary { background: var(--dark) !important; border-color: var(--dark) !important; color: #fff !important; }
+.np-cta-btns .np-btn-primary:hover { background: var(--darker) !important; border-color: var(--darker) !important; box-shadow: 0 6px 20px rgba(0,0,0,0.22) !important; }
+.np-cta-btns .np-btn-ghost-white { color: #1a0600 !important; border-color: rgba(26,10,0,0.28) !important; }
+.np-cta-btns .np-btn-ghost-white:hover { background: rgba(26,10,0,0.08) !important; border-color: rgba(26,10,0,0.55) !important; }
+.np-cta-footnote { font-family: 'Mulish', sans-serif; font-size: 13px; color: rgba(26,10,0,0.52); }
+.np-cta-footnote a { color: var(--dark); text-decoration: none; font-weight: 600; transition: color 0.15s; }
+.np-cta-footnote a:hover { color: var(--darker); }
 
 /* ── 9. FOOTER ────────────────────────────────────────────────────── */
 .np-footer { background: var(--darker); padding: 72px 0 0; }
@@ -444,21 +516,22 @@ a { color: inherit; }
 
 /* ── RESPONSIVE ───────────────────────────────────────────────────── */
 @media (max-width: 1100px) {
-  .np-hero-title { font-size: 52px; }
+  .np-hero-title { font-size: 60px; letter-spacing: -2px; }
   .np-h2 { font-size: 36px; }
   .np-cta-title { font-size: 38px; }
-  .np-feat-grid { grid-template-columns: repeat(2,1fr); }
+  .np-feat-row { grid-template-columns: 48px 200px 1fr; gap: 0 32px; }
   .np-detail-row { gap: 48px; }
-  .np-feat-cell-hero { grid-column: span 2; grid-row: span 1; padding: 40px 36px; }
 }
 @media (max-width: 900px) {
   .np-hero-visual { margin-top: 0; }
+  .np-hero-visual::before { display: none; }
   .np-img-stack { padding: 16px 40px 52px 0; }
-  .np-img-pill { display: none; }
   .np-hero { padding: 120px 0 64px; }
   .np-hero-inner { grid-template-columns: 1fr; gap: 48px; }
   .np-hero-text { align-items: center; text-align: center; }
-  .np-hero-title { font-size: 40px; letter-spacing: -0.5px; }
+  .np-hero-title { font-size: 44px; letter-spacing: -1px; }
+  .np-feat-row { grid-template-columns: 40px 1fr; gap: 0 24px; }
+  .np-feat-row-body { grid-column: 1 / -1; padding-left: 64px; margin-top: 8px; }
   .np-hero-sub { font-size: 16px; max-width: 560px; margin-left: auto; margin-right: auto; }
   .np-hero-ctas { justify-content: center; }
   .np-hero-trust { justify-content: center; }
@@ -469,27 +542,24 @@ a { color: inherit; }
   .np-step-sep { display: none; }
   .np-step { padding: 24px 0; text-align: left; }
   .np-step-num { font-size: 48px; margin-bottom: 8px; }
-  .np-testi-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
   .np-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .np-stats-row { grid-template-columns: repeat(2,1fr); }
-  .np-stat:nth-child(3)::before { display: none; }
   .np-nav-links { display: none; }
+  .np-testi-solo-quote { font-size: 22px; }
 }
 @media (max-width: 640px) {
   .np-wrap, .np-wrap-narrow, .np-wrap-wide { padding: 0 20px; }
   .np-nav-inner { padding: 0 20px; }
-  .np-hero-title { font-size: 30px; }
+  .np-hero-title { font-size: 34px; letter-spacing: -0.5px; }
+  .np-feat-row { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
+  .np-feat-row-body { padding-left: 0; grid-column: auto; margin-top: 0; }
   .np-h2 { font-size: 26px; }
   .np-cta-title { font-size: 28px; }
-  .np-feat-grid { grid-template-columns: 1fr; }
-  .np-feat-cell-hero { grid-column: span 1; grid-row: span 1; }
   .np-hero-ctas { flex-direction: column; align-items: center; width: 100%; }
   .np-hero-trust { flex-direction: column; gap: 8px; align-items: center; }
   .np-trust-item + .np-trust-item::before { display: none; }
   .np-cta-btns { flex-direction: column; align-items: center; }
   .np-footer-grid { grid-template-columns: 1fr; }
   .np-footer-bottom { flex-direction: column; text-align: center; }
-  .np-stats-row { grid-template-columns: repeat(2,1fr); }
   .np-img-primary { width: 260px; height: auto; }
   .np-img-secondary { width: 120px; height: auto; }
   .np-img-badge { width: 48px; height: 48px; }
@@ -512,8 +582,9 @@ a { color: inherit; }
     <a href="#" class="np-nav-logo"><img src="images/logo.png" alt="AI Proctor"></a>
     <ul class="np-nav-links">
       <li class="current"><a href="#">Home</a></li>
-      <li><a href="#">Privacy Policy</a></li>
-      <li><a href="#">Download</a></li>
+      <li><a href="#np-features">Features</a></li>
+      <li><a href="#np-how">How It Works</a></li>
+      <li><a href="#np-contact">Contact</a></li>
     </ul>
     <div class="np-nav-btns">
       <a href="#" class="np-hdr-btn np-hdr-btn-ghost">Login</a>
@@ -541,7 +612,7 @@ a { color: inherit; }
                     Real-time AI monitoring, assessment management, coding evaluation in 15+ languages, and deep analytics — in one unified, trusted system.
                 </p>
                 <div class="np-hero-ctas" data-aos="fade-up" data-aos-duration="700" data-aos-delay="240">
-                    <a href="mailto:info@ai-proctor.com" class="np-btn np-btn-primary np-btn-lg np-btn-pulse">
+                    <a href="#np-contact" class="np-btn np-btn-primary np-btn-lg np-btn-pulse">
                         <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
                         Book a Free Demo
                     </a>
@@ -560,14 +631,9 @@ a { color: inherit; }
 
             <div class="np-hero-visual" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
                 <div class="np-img-stack">
-                    <div class="np-img-glow" aria-hidden="true"></div>
                     <img src="images/foreground-program.png" alt="Student coding during an AI Proctor proctored exam" class="np-img-primary" width="760" height="654" loading="eager">
                     <img src="images/home2.png" alt="" aria-hidden="true" class="np-img-secondary" width="360" height="302" loading="eager">
                     <div class="np-img-badge" aria-hidden="true"><img src="images/ai-protect-1.png" alt="" width="92" height="92" loading="eager"></div>
-                    <div class="np-img-pill" aria-hidden="true">
-                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="4"/></svg>
-                        AI Monitoring Active
-                    </div>
                 </div>
             </div>
         </div>
@@ -578,24 +644,23 @@ a { color: inherit; }
 <!-- ══════════════════════════════════════════════════
      STATS BAR
 ══════════════════════════════════════════════════ -->
-<section class="np-stats" aria-live="polite" aria-label="Platform statistics">
-    <div class="np-wrap-wide">
-        <div class="np-stats-row">
-            <div class="np-stat" data-aos="fade-up" data-aos-duration="600" data-aos-delay="0">
-                <div class="np-stat-num" data-count="15" data-suffix="+">15+</div>
-                <div class="np-stat-label">Programming Languages</div>
-            </div>
-            <div class="np-stat" data-aos="fade-up" data-aos-duration="600" data-aos-delay="80">
-                <div class="np-stat-num" data-count="100" data-suffix="%">100%</div>
-                <div class="np-stat-label">Real-time Monitoring</div>
-            </div>
-            <div class="np-stat" data-aos="fade-up" data-aos-duration="600" data-aos-delay="160">
-                <div class="np-stat-num">AES-256</div>
-                <div class="np-stat-label">Encrypted Communication</div>
-            </div>
-            <div class="np-stat" data-aos="fade-up" data-aos-duration="600" data-aos-delay="240">
-                <div class="np-stat-num">24/7</div>
-                <div class="np-stat-label">Exam Integrity</div>
+<section class="np-stats" aria-label="Institutions using AI Proctor">
+    <div class="np-marquee-wrap">
+        <div class="np-marquee-label" aria-hidden="true">Deployed at</div>
+        <div class="np-marquee">
+            <div class="np-marquee-track" aria-label="Cairo University, ITI Egypt, Taylor's University Malaysia, Ain Shams University, Prince Sultan University, Modern Academy">
+                <span class="np-marquee-item">Cairo University</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item">ITI Egypt</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item">Taylor's University, Malaysia</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item">Ain Shams University</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item">Prince Sultan University</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item">Modern Academy</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item" aria-hidden="true">Cairo University</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item" aria-hidden="true">ITI Egypt</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item" aria-hidden="true">Taylor's University, Malaysia</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item" aria-hidden="true">Ain Shams University</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item" aria-hidden="true">Prince Sultan University</span><span class="np-marquee-dot" aria-hidden="true">·</span>
+                <span class="np-marquee-item" aria-hidden="true">Modern Academy</span><span class="np-marquee-dot" aria-hidden="true">·</span>
             </div>
         </div>
     </div>
@@ -603,52 +668,53 @@ a { color: inherit; }
 
 
 <!-- ══════════════════════════════════════════════════
-     FEATURES GRID
+     FEATURES LIST
 ══════════════════════════════════════════════════ -->
 <section id="np-features" class="np-features">
     <div class="np-wrap">
         <div class="np-section-head" data-aos="fade-up" data-aos-duration="700">
             <span class="np-kicker">What We Offer</span>
             <h2 class="np-h2">Everything you need for<br>credible online exams</h2>
-            <p class="np-lead">AI Proctor unifies proctoring, assessment management, coding evaluation, and analytics in one clean, professional platform.</p>
+            <p class="np-lead">Proctoring, assessment management, coding evaluation, and analytics — in one unified platform.</p>
         </div>
-        <div class="np-feat-grid">
-            <div class="np-feat-cell np-feat-cell-hero" data-aos="fade-up" data-aos-duration="700" data-aos-delay="0">
-                <div class="np-feat-icon np-icon-amber"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3" fill="currentColor"/><path d="M10 1.5V4M10 16v2.5M1.5 10H4M16 10h2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                <h3 class="np-feat-title">AI Proctoring</h3>
-                <p class="np-feat-hero-sub">Face recognition, browser monitoring, speech detection, and real-time alerts — every suspicious event captured with timestamped video evidence and delivered straight to the instructor.</p>
-                <div class="np-feat-hero-tags">
-                    <span class="np-feat-hero-tag">Face Recognition</span>
-                    <span class="np-feat-hero-tag">Browser Monitor</span>
-                    <span class="np-feat-hero-tag">Speech Detection</span>
-                    <span class="np-feat-hero-tag">Live Streaming</span>
-                    <span class="np-feat-hero-tag">Video Evidence</span>
+        <div class="np-feat-list" data-aos="fade-up" data-aos-duration="700" data-aos-delay="100">
+            <div class="np-feat-row">
+                <span class="np-feat-row-num">01</span>
+                <h3 class="np-feat-row-title">AI Proctoring</h3>
+                <div class="np-feat-row-body">
+                    <p>Face recognition, browser monitoring, speech detection, and real-time alerts — every suspicious event captured with timestamped video evidence and delivered straight to the instructor.</p>
+                    <div class="np-feat-hero-tags">
+                        <span class="np-feat-hero-tag">Face Recognition</span>
+                        <span class="np-feat-hero-tag">Browser Monitoring</span>
+                        <span class="np-feat-hero-tag">Speech Detection</span>
+                        <span class="np-feat-hero-tag">Video Evidence</span>
+                    </div>
                 </div>
             </div>
-            <div class="np-feat-cell" data-aos="fade-up" data-aos-duration="600" data-aos-delay="60">
-                <div class="np-feat-icon np-icon-dark"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="3" width="16" height="14" rx="3" stroke="currentColor" stroke-width="1.5"/><path d="M6 7h8M6 10h8M6 13h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                <h3 class="np-feat-title">Assessment Management</h3>
-                <p class="np-feat-desc">Create, schedule, and deliver exams with a clean UI. Mix MCQ, essay, and coding in one workflow.</p>
+            <div class="np-feat-row">
+                <span class="np-feat-row-num">02</span>
+                <h3 class="np-feat-row-title">Assessment Management</h3>
+                <div class="np-feat-row-body">Create, schedule, and deliver exams with a clean interface. Mix MCQ, essay, and coding questions in a single workflow.</div>
             </div>
-            <div class="np-feat-cell" data-aos="fade-up" data-aos-duration="600" data-aos-delay="120">
-                <div class="np-feat-icon np-icon-amber"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 7l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 13l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-                <h3 class="np-feat-title">Coding Questions</h3>
-                <p class="np-feat-desc">15+ programming languages with automated test case execution — evaluate real skills, not just answers.</p>
+            <div class="np-feat-row">
+                <span class="np-feat-row-num">03</span>
+                <h3 class="np-feat-row-title">Coding Questions</h3>
+                <div class="np-feat-row-body">15+ programming languages with automated test case execution — evaluate real technical skills, not just memorised answers.</div>
             </div>
-            <div class="np-feat-cell" data-aos="fade-up" data-aos-duration="600" data-aos-delay="180">
-                <div class="np-feat-icon np-icon-dark"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><ellipse cx="10" cy="5" rx="7" ry="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 5v5c0 1.657 3.134 3 7 3s7-1.343 7-3V5" stroke="currentColor" stroke-width="1.5"/><path d="M3 10v5c0 1.657 3.134 3 7 3s7-1.343 7-3v-5" stroke="currentColor" stroke-width="1.5"/></svg></div>
-                <h3 class="np-feat-title">Question Bank</h3>
-                <p class="np-feat-desc">Curated questions across skills, careers, and coding. Build complete exams in minutes.</p>
+            <div class="np-feat-row">
+                <span class="np-feat-row-num">04</span>
+                <h3 class="np-feat-row-title">Question Bank</h3>
+                <div class="np-feat-row-body">Curated questions across skills, careers, and coding categories. Build complete exams in minutes instead of hours.</div>
             </div>
-            <div class="np-feat-cell" data-aos="fade-up" data-aos-duration="600" data-aos-delay="240">
-                <div class="np-feat-icon np-icon-amber"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="12" width="3" height="6" rx="1" fill="currentColor"/><rect x="7" y="8" width="3" height="10" rx="1" fill="currentColor"/><rect x="12" y="5" width="3" height="13" rx="1" fill="currentColor"/><rect x="17" y="2" width="3" height="16" rx="1" fill="currentColor"/></svg></div>
-                <h3 class="np-feat-title">Statistics &amp; Analytics</h3>
-                <p class="np-feat-desc">Grade distributions, performance charts, and student progress — data-driven insights after every session.</p>
+            <div class="np-feat-row">
+                <span class="np-feat-row-num">05</span>
+                <h3 class="np-feat-row-title">Statistics &amp; Analytics</h3>
+                <div class="np-feat-row-body">Grade distributions, performance charts, and individual student progress — data-driven insights delivered automatically after every session.</div>
             </div>
-            <div class="np-feat-cell" data-aos="fade-up" data-aos-duration="600" data-aos-delay="300">
-                <div class="np-feat-icon np-icon-dark"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2a6 6 0 016 6c0 4-6 10-6 10S4 12 4 8a6 6 0 016-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/></svg></div>
-                <h3 class="np-feat-title">Works Offline</h3>
-                <p class="np-feat-desc">Encrypted local caching ensures zero data loss during internet disruptions — the system recovers automatically.</p>
+            <div class="np-feat-row">
+                <span class="np-feat-row-num">06</span>
+                <h3 class="np-feat-row-title">Works Offline</h3>
+                <div class="np-feat-row-body">AES-256 encrypted local caching ensures zero data loss during internet disruptions — the system recovers automatically when connectivity returns.</div>
             </div>
         </div>
     </div>
@@ -676,7 +742,7 @@ a { color: inherit; }
                     <li><span class="np-li-dot"><svg aria-hidden="true" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#f28f00" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Live screen &amp; camera streaming for any student on demand</li>
                     <li><span class="np-li-dot"><svg aria-hidden="true" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#f28f00" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Full report with timestamped video clips delivered post-exam</li>
                 </ul>
-                <a href="mailto:info@ai-proctor.com" class="np-btn np-btn-primary">
+                <a href="#np-contact" class="np-btn np-btn-primary">
                     <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 4.5l6 4 6-4" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
                     Book a Demo
                 </a>
@@ -703,7 +769,7 @@ a { color: inherit; }
                     <li><span class="np-li-dot"><svg aria-hidden="true" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#f28f00" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Mix coding, MCQ, and essay questions in one exam</li>
                     <li><span class="np-li-dot"><svg aria-hidden="true" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5L3.5 6.5L7.5 2.5" stroke="#f28f00" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Full AI proctoring active during coding exams</li>
                 </ul>
-                <a href="mailto:info@ai-proctor.com" class="np-btn np-btn-primary">
+                <a href="#np-contact" class="np-btn np-btn-primary">
                     <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2.5" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M1 4.5l6 4 6-4" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
                     Book a Demo
                 </a>
@@ -757,7 +823,7 @@ a { color: inherit; }
 <!-- ══════════════════════════════════════════════════
      HOW IT WORKS
 ══════════════════════════════════════════════════ -->
-<section class="np-how">
+<section id="np-how" class="np-how">
     <div class="np-wrap">
         <div class="np-section-head" data-aos="fade-up" data-aos-duration="700">
             <span class="np-kicker">How It Works</span>
@@ -794,41 +860,22 @@ a { color: inherit; }
 
 
 <!-- ══════════════════════════════════════════════════
-     TESTIMONIALS
+     TESTIMONIAL
 ══════════════════════════════════════════════════ -->
 <section class="np-testimonials">
     <div class="np-wrap">
-        <div class="np-section-head" data-aos="fade-up" data-aos-duration="700">
-            <span class="np-kicker">Trusted by Institutions</span>
-            <h2 class="np-h2">What our partners say</h2>
-            <p class="np-lead">Academic institutions and professional bodies worldwide trust AI Proctor and the GlobalAssess360 Suite.</p>
-        </div>
-        <div class="np-testi-grid">
-            <div class="np-testi" data-aos="fade-up" data-aos-duration="700" data-aos-delay="0">
-                <div class="np-testi-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                <span class="np-testi-mark">"</span>
-                <p class="np-testi-text">Questions generated are very high in quality, and assessments are very efficient. AI Proctor has transformed how we manage exams at a university scale.</p>
-                <div class="np-testi-author">
-                    <div class="np-testi-avatar"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" stroke="#f28f00" stroke-width="1.5"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#f28f00" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                    <div><div class="np-testi-name">Prof. Mohsen Rashwan</div><div class="np-testi-role">Cairo University</div></div>
-                </div>
-            </div>
-            <div class="np-testi np-testi-featured" data-aos="fade-up" data-aos-duration="700" data-aos-delay="120">
-                <div class="np-testi-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                <span class="np-testi-mark">"</span>
-                <p class="np-testi-text">AI-Proctor was a game changer for our institution. The level of real-time control and monitoring precision is truly unprecedented.</p>
-                <div class="np-testi-author">
-                    <div class="np-testi-avatar"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" stroke="#f28f00" stroke-width="1.5"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#f28f00" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                    <div><div class="np-testi-name">Eng. Sherif Sharaf</div><div class="np-testi-role">ITI, Egypt</div></div>
-                </div>
-            </div>
-            <div class="np-testi" data-aos="fade-up" data-aos-duration="700" data-aos-delay="240">
-                <div class="np-testi-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
-                <span class="np-testi-mark">"</span>
-                <p class="np-testi-text">The system provided the credibility we needed during online exams. Our students and faculty trust the platform completely.</p>
-                <div class="np-testi-author">
-                    <div class="np-testi-avatar"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="4" stroke="#f28f00" stroke-width="1.5"/><path d="M3 18c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="#f28f00" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                    <div><div class="np-testi-name">Dr. Nor Shaipah</div><div class="np-testi-role">Taylor's University, Malaysia</div></div>
+        <div class="np-testi-solo" data-aos="fade-up" data-aos-duration="900">
+            <span class="np-testi-solo-stars" role="img" aria-label="5 out of 5 stars">★★★★★</span>
+            <blockquote class="np-testi-solo-quote">
+                "AI Proctor was a game changer for our institution.
+                The level of real-time control and monitoring precision
+                is truly unprecedented in our training programmes."
+            </blockquote>
+            <div class="np-testi-solo-attr">
+                <div class="np-testi-solo-avatar" aria-hidden="true">SS</div>
+                <div class="np-testi-solo-info">
+                    <div class="np-testi-solo-name">Eng. Sherif Sharaf</div>
+                    <div class="np-testi-solo-role">Information Technology Institute (ITI), Egypt</div>
                 </div>
             </div>
         </div>
@@ -846,13 +893,63 @@ a { color: inherit; }
             <h2 class="np-cta-title">Ready to bring real integrity<br>to your online exams?</h2>
             <p class="np-cta-sub">Join institutions across the world that trust AI Proctor — part of the GlobalAssess360 Suite — to deliver credible, monitored, and fair examinations.</p>
             <div class="np-cta-btns">
-                <a href="mailto:info@ai-proctor.com" class="np-btn np-btn-primary np-btn-lg">
+                <a href="#np-contact" class="np-btn np-btn-primary np-btn-lg">
                     <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M1 5l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
                     Book a Free Demo
                 </a>
                 <a href="#" class="np-btn np-btn-ghost-white np-btn-lg">Create an Account</a>
             </div>
-            <p class="np-cta-footnote">Or reach us at <a href="mailto:info@ai-proctor.com">info@ai-proctor.com</a></p>
+            <p class="np-cta-footnote">Or reach us directly at <a href="mailto:info@ai-proctor.com">info@ai-proctor.com</a></p>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════ -->
+<section id="np-contact" class="np-contact">
+    <div class="np-wrap">
+        <div class="np-contact-inner">
+            <div class="np-contact-info" data-aos="fade-right" data-aos-duration="800">
+                <span class="np-kicker">Get in Touch</span>
+                <h2 class="np-h2">Book a demo or<br>ask us anything</h2>
+                <p class="np-lead">We'll walk you through the platform, answer every technical question, and help you find the right setup for your institution.</p>
+                <a href="mailto:info@ai-proctor.com" class="np-contact-detail">
+                    <span class="np-contact-detail-ico"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+                    info@ai-proctor.com
+                </a>
+                <a href="https://www.globalassess360.com/" target="_blank" rel="noopener" class="np-contact-detail">
+                    <span class="np-contact-detail-ico"><i class="fas fa-globe" aria-hidden="true"></i></span>
+                    globalassess360.com
+                </a>
+            </div>
+            <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="100">
+                <form class="np-contact-form-wrap" action="mailto:info@ai-proctor.com" method="post" enctype="text/plain" novalidate>
+                    <div class="np-form-row">
+                        <div>
+                            <label class="np-form-label" for="cf-name">Full Name</label>
+                            <input class="np-form-input" id="cf-name" name="name" type="text" placeholder="Dr. Ahmed Hassan" autocomplete="name" required>
+                        </div>
+                        <div>
+                            <label class="np-form-label" for="cf-institution">Institution</label>
+                            <input class="np-form-input" id="cf-institution" name="institution" type="text" placeholder="Cairo University" required>
+                        </div>
+                    </div>
+                    <div class="np-form-group">
+                        <label class="np-form-label" for="cf-email">Work Email</label>
+                        <input class="np-form-input" id="cf-email" name="email" type="email" placeholder="you@institution.edu" autocomplete="email" required>
+                    </div>
+                    <div class="np-form-group">
+                        <label class="np-form-label" for="cf-message">How can we help?</label>
+                        <textarea class="np-form-input" id="cf-message" name="message" placeholder="Tell us about your exam workflow, team size, or what you'd like to see in the demo..." required></textarea>
+                    </div>
+                    <button type="submit" class="np-btn np-btn-primary np-btn-lg np-form-submit">
+                        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M8 2l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Send Message
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
@@ -922,38 +1019,6 @@ AOS.init({ once: true, offset: 60, easing: 'ease-out-quart' });
         bar.style.transform = 'scaleX(' + (total > 0 ? scrolled / total : 0) + ')';
       }, { passive: true });
     }
-  }
-
-  /* CountUp stat numbers */
-  var countEls = document.querySelectorAll('[data-count]');
-  if (countEls.length && !prefersReducedMotion) {
-    var statsSection = document.querySelector('.np-stats');
-    if (statsSection) {
-      var counted = false;
-      var statObs = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting && !counted) {
-          counted = true;
-          countEls.forEach(function (el) {
-            var target = parseInt(el.dataset.count, 10);
-            var suffix = el.dataset.suffix || '';
-            var duration = 1100;
-            var t0 = performance.now();
-            function tick(now) {
-              var p = Math.min((now - t0) / duration, 1);
-              var eased = 1 - Math.pow(1 - p, 3);
-              el.textContent = Math.round(eased * target) + suffix;
-              if (p < 1) requestAnimationFrame(tick);
-            }
-            requestAnimationFrame(tick);
-          });
-        }
-      }, { threshold: 0.6 });
-      statObs.observe(statsSection);
-    }
-  } else {
-    countEls.forEach(function (el) {
-      el.textContent = el.dataset.count + (el.dataset.suffix || '');
-    });
   }
 
   /* Staggered check-list reveal */
